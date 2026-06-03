@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BETALIS — Bureau d'études ingénierie structure | Béton · Métal · Bois</title>
+<meta name="description" content="BETALIS, bureau d'études en ingénierie structure. Conception et calcul de structures béton, métal et bois pour collectivités, promoteurs, entreprises générales et particuliers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="icon" href="assets/betalis-favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/betalis-apple-touch-180.png">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1A1A2E;
+    --navy-2:#22223A;
+    --navy-3:#2C2C48;
+    --beton:#8A8D94;
+    --bois:#B0703F;
+    --metal:#5B8AAE;
+    --text-light:#B0B2C8;
+    --text-mute:#6E7088;
+    --white:#FFFFFF;
+    --line:rgba(255,255,255,0.08);
+    --line-2:rgba(255,255,255,0.14);
+    --maxw:1180px;
+    --font-display:'Manrope',sans-serif;
+    --font-body:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--font-body);
+    background:var(--navy);
+    color:var(--text-light);
+    line-height:1.7;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4,.display{font-family:var(--font-display);color:var(--white);line-height:1.15;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+  .accent-dots{display:inline-flex;gap:7px;align-items:center}
+  .accent-dots span{width:9px;height:9px;border-radius:50%;display:inline-block}
+  .d-beton{background:var(--beton)}.d-bois{background:var(--bois)}.d-metal{background:var(--metal)}
+
+  /* ===== NAV ===== */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  header.nav.scrolled{background:rgba(26,26,46,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{display:flex;align-items:center;gap:13px;font-family:var(--font-display);font-weight:800;letter-spacing:3px;font-size:20px;color:#fff}
+  .logo .dots{display:flex;gap:5px}
+  .logo .dots span{width:8px;height:8px;border-radius:50%}
+  .nav-links{display:flex;gap:36px;align-items:center}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--text-light);transition:color .2s;position:relative}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{font-family:var(--font-display);font-weight:600;font-size:14px;color:#fff!important;border:1px solid var(--line-2);padding:10px 22px;border-radius:8px;transition:background .2s,border-color .2s}
+  .nav-cta:hover{background:var(--metal);border-color:var(--metal)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none}
+  .burger span{width:24px;height:2px;background:#fff;border-radius:2px}
+
+  /* ===== HERO ===== */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:120px 0 80px;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:0;
+    background:
+      radial-gradient(900px 500px at 78% 18%, rgba(91,138,174,0.16), transparent 60%),
+      radial-gradient(700px 500px at 15% 85%, rgba(176,112,63,0.10), transparent 60%),
+      var(--navy);
+  }
+  .grid-overlay{position:absolute;inset:0;z-index:0;opacity:0.5;
+    background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+    background-size:64px 64px;
+    -webkit-mask-image:radial-gradient(circle at 70% 35%,#000,transparent 75%);
+            mask-image:radial-gradient(circle at 70% 35%,#000,transparent 75%);
+  }
+  .hero-inner{position:relative;z-index:2;max-width:880px}
+  .eyebrow{display:inline-flex;align-items:center;gap:14px;font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--text-light);margin-bottom:30px}
+  .hero h1{font-size:clamp(2.6rem,6vw,4.6rem);font-weight:800;margin-bottom:28px}
+  .hero h1 .mat{position:relative;white-space:nowrap}
+  .hero h1 .c-beton{color:var(--beton)}.hero h1 .c-bois{color:var(--bois)}.hero h1 .c-metal{color:var(--metal)}
+  .hero p.lead{font-size:clamp(1.05rem,1.6vw,1.3rem);max-width:640px;color:var(--text-light);margin-bottom:20px}
+  .lead-sub{font-family:var(--font-display);font-weight:600;font-size:1.02rem;color:#fff;margin-bottom:14px}
+  .lead-clients{list-style:none;display:flex;flex-wrap:wrap;gap:10px;margin-bottom:40px;max-width:640px}
+  .lead-clients li{font-family:var(--font-display);font-size:.85rem;font-weight:600;color:var(--text-light);border:1px solid var(--line-2);padding:7px 15px;border-radius:22px;transition:border-color .2s,color .2s}
+  .lead-clients li:hover{border-color:var(--metal);color:#fff}
+  /* Bande chiffres clés */
+  .stats-band{padding:66px 0;border-top:1px solid var(--line)}
+  .stats-label{font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--text-mute);margin-bottom:36px}
+  .stats-inner{display:grid;grid-template-columns:repeat(3,1fr);gap:44px}
+  .stat-num{font-family:var(--font-display);font-weight:800;font-size:3.3rem;color:#fff;line-height:1}
+  .stat-num small{font-size:1.7rem;color:var(--metal)}
+  .stat-bar{width:46px;height:3px;border-radius:2px;margin:16px 0 14px}
+  .stat-bar.b-beton{background:var(--beton)}
+  .stat-bar.b-bois{background:var(--bois)}
+  .stat-bar.b-metal{background:var(--metal)}
+  .stat-label{font-size:.95rem;color:var(--text-light);max-width:270px}
+  .hero-actions{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{font-family:var(--font-display);font-weight:600;font-size:15px;padding:15px 30px;border-radius:9px;cursor:pointer;transition:transform .15s,background .2s,border-color .2s;display:inline-flex;align-items:center;gap:10px;border:1px solid transparent}
+  .btn-primary{background:var(--metal);color:#fff}
+  .btn-primary:hover{transform:translateY(-2px);background:#6c9bbf}
+  .btn-ghost{border-color:var(--line-2);color:#fff}
+  .btn-ghost:hover{border-color:#fff;transform:translateY(-2px)}
+  .axes-label{position:relative;z-index:2;font-family:var(--font-display);font-weight:600;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--text-mute);margin-top:78px;margin-bottom:22px}
+  .hero-axes{position:relative;z-index:2;display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:940px}
+  .axe{border-top:1px solid var(--line-2);padding-top:16px}
+  .axe .axe-n{font-family:var(--font-display);font-weight:800;font-size:1.05rem;color:var(--metal);display:block;margin-bottom:9px}
+  .axe .axe-t{font-family:var(--font-display);font-weight:600;font-size:.97rem;color:#fff;line-height:1.35;display:block}
+
+  /* reveal animation */
+  .reveal{opacity:0;transform:translateY(24px);animation:rise .8s cubic-bezier(.2,.7,.2,1) forwards}
+  @keyframes rise{to{opacity:1;transform:none}}
+  .r1{animation-delay:.05s}.r2{animation-delay:.18s}.r3{animation-delay:.31s}.r4{animation-delay:.44s}.r5{animation-delay:.6s}
+
+  /* ===== SECTION GENERIC ===== */
+  section{position:relative}
+  .section-pad{padding:110px 0}
+  .sec-head{max-width:680px;margin-bottom:60px}
+  .sec-tag{font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--metal);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .sec-tag::before{content:"";width:32px;height:1px;background:var(--metal)}
+  .sec-head h2{font-size:clamp(2rem,3.8vw,2.9rem);font-weight:700;margin-bottom:20px}
+  .sec-head p{font-size:1.08rem;color:var(--text-light)}
+
+  /* ===== EXPERTISES ===== */
+  .expertises{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .exp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+  .exp-card{background:var(--navy);border:1px solid var(--line);border-radius:16px;padding:38px 34px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+  .exp-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;transform:scaleX(0);transform-origin:left;transition:transform .4s}
+  .exp-card:hover{transform:translateY(-6px)}
+  .exp-card:hover::before{transform:scaleX(1)}
+  .exp-card.beton::before{background:var(--beton)}
+  .exp-card.bois::before{background:var(--bois)}
+  .exp-card.metal::before{background:var(--metal)}
+  .exp-card.beton:hover{border-color:rgba(138,141,148,.5)}
+  .exp-card.bois:hover{border-color:rgba(176,112,63,.5)}
+  .exp-card.metal:hover{border-color:rgba(91,138,174,.5)}
+  .exp-icon{width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-bottom:26px}
+  .exp-icon svg{width:28px;height:28px}
+  .exp-card.beton .exp-icon{background:rgba(138,141,148,.15)}
+  .exp-card.bois .exp-icon{background:rgba(176,112,63,.15)}
+  .exp-card.metal .exp-icon{background:rgba(91,138,174,.15)}
+  .exp-card h3{font-size:1.5rem;font-weight:700;margin-bottom:8px}
+  .exp-card .sub{font-family:var(--font-display);font-size:13px;font-weight:600;letter-spacing:2px;text-transform:uppercase;margin-bottom:18px}
+  .exp-card.beton .sub{color:var(--beton)}
+  .exp-card.bois .sub{color:var(--bois)}
+  .exp-card.metal .sub{color:var(--metal)}
+  .exp-card p{font-size:.97rem;color:var(--text-light);margin-bottom:22px}
+  .exp-card ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .exp-card ul li{font-size:.92rem;color:var(--text-light);padding-left:20px;position:relative}
+  .exp-card ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%}
+  .exp-card.beton ul li::before{background:var(--beton)}
+  .exp-card.bois ul li::before{background:var(--bois)}
+  .exp-card.metal ul li::before{background:var(--metal)}
+
+  /* ===== APPROCHE ===== */
+  .approche-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:70px;align-items:center}
+  .appr-list{display:flex;flex-direction:column;gap:30px;margin-top:36px}
+  .appr-item{display:flex;gap:20px}
+  .appr-num{font-family:var(--font-display);font-weight:800;font-size:1.1rem;color:var(--metal);border:1px solid var(--line-2);min-width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center}
+  .appr-item h4{font-size:1.15rem;font-weight:700;margin-bottom:5px}
+  .appr-item p{font-size:.96rem;color:var(--text-light)}
+  .appr-visual{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--navy-2);min-height:420px;display:flex;align-items:center;justify-content:center}
+  .appr-visual .frame{text-align:center;padding:40px}
+  .appr-visual .frame .big{font-family:var(--font-display);font-weight:800;font-size:5rem;color:#fff;line-height:1}
+  .appr-visual .frame .big small{font-size:2rem;color:var(--metal)}
+  .appr-visual .frame .cap{color:var(--text-mute);font-size:14px;margin-top:10px;letter-spacing:1px}
+  .appr-visual .mini-dots{margin-top:30px;justify-content:center}
+
+  /* ===== REFERENCES ===== */
+  .references{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .ref-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .ref-card{background:var(--navy);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:transform .3s,border-color .3s;cursor:pointer}
+  .ref-card:hover{transform:translateY(-5px);border-color:var(--line-2)}
+  .ref-thumb{height:180px;display:flex;align-items:flex-end;padding:20px;position:relative;background:var(--navy-3)}
+  .ref-thumb.t1{background:linear-gradient(135deg,#2c2c48,#3a3a5e)}
+  .ref-thumb.t2{background:linear-gradient(135deg,#2e2a3e,#46384a)}
+  .ref-thumb.t3{background:linear-gradient(135deg,#26303a,#33485a)}
+  .ref-thumb .tag{font-family:var(--font-display);font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:6px 12px;border-radius:6px;background:rgba(0,0,0,.3);backdrop-filter:blur(4px)}
+  .ref-thumb .tag.beton{color:var(--beton)}
+  .ref-thumb .tag.bois{color:var(--bois)}
+  .ref-thumb .tag.metal{color:var(--metal)}
+  .ref-info{padding:22px}
+  .ref-info h4{font-size:1.12rem;font-weight:700;margin-bottom:6px}
+  .ref-info .meta{font-size:.86rem;color:var(--text-mute)}
+  .ref-cta-row{text-align:center;margin-top:50px}
+
+  /* ===== CLIENTS BAND ===== */
+  .clients{padding:70px 0;text-align:center}
+  .clients .lbl{font-family:var(--font-display);font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--text-mute);margin-bottom:30px}
+  .clients-row{display:flex;justify-content:center;gap:50px;flex-wrap:wrap}
+  .client-chip{font-family:var(--font-display);font-weight:600;font-size:1.05rem;color:var(--text-light);opacity:.7}
+
+  /* ===== CONTACT ===== */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:64px}
+  .contact-info h2{font-size:clamp(2rem,3.5vw,2.7rem);margin-bottom:22px}
+  .contact-info>p{color:var(--text-light);margin-bottom:36px;max-width:420px}
+  .contact-detail{display:flex;gap:16px;margin-bottom:24px;align-items:flex-start}
+  .contact-detail .ico{width:44px;height:44px;border-radius:10px;background:var(--navy-2);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .contact-detail .ico svg{width:20px;height:20px;stroke:var(--metal)}
+  .contact-detail .ct-label{font-size:12px;color:var(--text-mute);text-transform:uppercase;letter-spacing:1px}
+  .contact-detail .ct-val{font-size:1.02rem;color:#fff;font-weight:500}
+  form{background:var(--navy-2);border:1px solid var(--line);border-radius:18px;padding:38px}
+  .field{margin-bottom:20px}
+  .field label{display:block;font-size:13px;font-family:var(--font-display);font-weight:600;color:var(--text-light);margin-bottom:8px;letter-spacing:.5px}
+  .field input,.field select,.field textarea{width:100%;background:var(--navy);border:1px solid var(--line-2);border-radius:10px;padding:13px 16px;color:#fff;font-family:var(--font-body);font-size:.97rem;transition:border-color .2s}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--metal)}
+  .field textarea{resize:vertical;min-height:120px}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  form .btn-primary{width:100%;justify-content:center;margin-top:6px}
+
+  /* ===== FOOTER ===== */
+  footer{background:var(--navy);border-top:1px solid var(--line);padding:64px 0 32px}
+  .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1.4fr;gap:40px;margin-bottom:50px}
+  .foot-brand .logo{margin-bottom:18px}
+  .foot-brand p{font-size:.92rem;color:var(--text-mute);max-width:280px}
+  .foot-col h5{font-family:var(--font-display);font-size:13px;letter-spacing:1.5px;text-transform:uppercase;color:#fff;margin-bottom:18px}
+  .foot-col a{display:block;font-size:.93rem;color:var(--text-light);margin-bottom:11px;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-bottom{border-top:1px solid var(--line);padding-top:26px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.85rem;color:var(--text-mute)}
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .burger{display:flex}
+    .exp-grid,.ref-grid{grid-template-columns:1fr}
+    .approche-grid,.contact-grid{grid-template-columns:1fr;gap:44px}
+    .foot-grid{grid-template-columns:1fr 1fr;gap:32px}
+    .hero-axes{grid-template-columns:repeat(2,1fr);gap:24px 20px}
+    .stats-inner{grid-template-columns:1fr;gap:34px}
+  }
+  @media(max-width:560px){
+    .wrap{padding:0 22px}
+    .section-pad{padding:72px 0}
+    .field-row{grid-template-columns:1fr}
+    .foot-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo">
+      <span class="dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></span>
+      BETALIS
+    </a>
+    <nav class="nav-links">
+      <a href="#expertises">Expertises</a>
+      <a href="#references">Références</a>
+      <a href="#buzz">Buzz</a>
+      <a href="#contact" class="nav-cta">Nous contacter</a>
+    </nav>
+    <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="grid-overlay"></div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <span class="eyebrow reveal r1">
+        <span class="accent-dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></span>
+        Mon bureau d'études ingénierie
+      </span>
+      <h1 class="reveal r2">Expert en structures<br><span class="mat c-beton">béton</span>, <span class="mat c-metal">métal</span> et <span class="mat c-bois">bois</span>.</h1>
+      <p class="lead reveal r3">BETALIS conçoit, calcule, dimensionne et optimise les structures de vos projets. Nous intervenons dans le cadre de projets de constructions neuves, mais aussi de réhabilitation et de rénovation.</p>
+      <p class="lead-sub reveal r3">Une ingénierie rigoureuse au service des :</p>
+      <ul class="lead-clients reveal r3">
+        <li>Collectivités territoriales</li>
+        <li>Communautés d'agglomération</li>
+        <li>Promoteurs</li>
+        <li>Entreprises générales</li>
+        <li>Particuliers</li>
+      </ul>
+      <div class="hero-actions reveal r4">
+        <a href="#contact" class="btn btn-primary">Démarrer un projet →</a>
+      </div>
+    </div>
+    <div class="axes-label reveal r5">Nos 4 principaux axes</div>
+    <div class="hero-axes reveal r5">
+      <div class="axe"><span class="axe-n">01</span><span class="axe-t">Audits, diagnostics &amp; expertise</span></div>
+      <div class="axe"><span class="axe-n">02</span><span class="axe-t">Assistance à Maîtrise d'Ouvrage</span></div>
+      <div class="axe"><span class="axe-n">03</span><span class="axe-t">Maîtrise d'Œuvre complète</span></div>
+      <div class="axe"><span class="axe-n">04</span><span class="axe-t">Études d'exécution</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CHIFFRES CLÉS ===== -->
+<section class="stats-band">
+  <div class="wrap">
+    <div class="stats-label">Nos 3 gages de confiance</div>
+    <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">20<small>+</small></div>
+      <div class="stat-bar b-beton"></div>
+      <div class="stat-label">Années d'expérience requises pour un ingénieur BETALIS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1300<small>+</small></div>
+      <div class="stat-bar b-bois"></div>
+      <div class="stat-label">Projets cumulés à l'actif de nos ingénieurs</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0<small>%</small></div>
+      <div class="stat-bar b-metal"></div>
+      <div class="stat-label">Sinistre ou responsabilité mise en cause</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERTISES ===== -->
+<section class="expertises section-pad" id="expertises">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Nos expertises</div>
+      <h2>Trois matériaux, une même exigence de précision</h2>
+      <p>Chaque structure a son matériau. Nous maîtrisons les trois et leurs combinaisons, pour proposer la solution la plus juste — techniquement et économiquement.</p>
+    </div>
+    <div class="exp-grid">
+      <!-- BÉTON -->
+      <div class="exp-card beton">
+        <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#8A8D94" stroke-width="1.6"><rect x="3" y="4" width="18" height="6" rx="1"/><rect x="3" y="14" width="18" height="6" rx="1"/></svg></div>
+        <div class="sub">Béton</div>
+        <h3>Structures béton</h3>
+        <p>Béton armé et précontraint, des fondations aux planchers, pour le bâtiment et l'ouvrage d'art.</p>
+        <ul>
+          <li>Fondations superficielles et profondes</li>
+          <li>Planchers, dalles et voiles</li>
+          <li>Béton précontraint</li>
+          <li>Reprises en sous-œuvre</li>
+        </ul>
+        <a href="expertise-beton.html" style="display:inline-block;margin-top:22px;font-family:var(--font-display);font-weight:600;font-size:.92rem;color:var(--beton)">Découvrir le béton →</a>
+      </div>
+      <!-- MÉTAL -->
+      <div class="exp-card metal">
+        <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#5B8AAE" stroke-width="1.6"><path d="M3 21L8 4l8 9 5-6"/><path d="M3 21h18"/></svg></div>
+        <div class="sub">Métal</div>
+        <h3>Charpente métallique</h3>
+        <p>Ossatures et charpentes acier, conçues pour la performance, la légèreté et les grandes portées.</p>
+        <ul>
+          <li>Charpentes et ossatures acier</li>
+          <li>Calcul d'assemblages</li>
+          <li>Planchers mixtes acier-béton</li>
+          <li>Structures de façade</li>
+        </ul>
+      </div>
+      <!-- BOIS -->
+      <div class="exp-card bois">
+        <div class="exp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B0703F" stroke-width="1.6"><path d="M5 3v18M5 7h6M5 12h8M5 17h5"/><path d="M17 3c2 4 2 14 0 18"/></svg></div>
+        <div class="sub">Bois</div>
+        <h3>Structures bois</h3>
+        <p>Construction biosourcée, du lamellé-collé au CLT, pour des projets durables et bas carbone.</p>
+        <ul>
+          <li>Charpente traditionnelle et industrielle</li>
+          <li>Lamellé-collé et CLT</li>
+          <li>Structures mixtes bois-béton</li>
+          <li>Ingénierie bas carbone</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== APPROCHE ===== -->
+<section class="section-pad" id="approche">
+  <div class="wrap">
+    <div class="approche-grid">
+      <div>
+        <div class="sec-tag">Notre approche</div>
+        <h2 style="font-size:clamp(2rem,3.8vw,2.9rem);font-weight:700;margin-bottom:18px">Une ingénierie claire, du premier croquis à la pose</h2>
+        <p style="color:var(--text-light)">Nous intervenons à chaque phase pour sécuriser vos décisions techniques, fluidifier les échanges entre intervenants et tenir vos délais comme votre budget.</p>
+        <div class="appr-list">
+          <div class="appr-item"><div class="appr-num">01</div><div><h4>Études de faisabilité</h4><p>Analyse structurelle amont, pré-dimensionnement et chiffrage des variantes pour orienter vos choix.</p></div></div>
+          <div class="appr-item"><div class="appr-num">02</div><div><h4>Conception &amp; calcul</h4><p>Dimensionnement aux Eurocodes, notes de calcul et modélisation des structures béton, métal et bois.</p></div></div>
+          <div class="appr-item"><div class="appr-num">03</div><div><h4>Plans d'exécution</h4><p>Plans de coffrage, ferraillage et fabrication, coordonnés avec l'ensemble des corps d'état.</p></div></div>
+          <div class="appr-item"><div class="appr-num">04</div><div><h4>Suivi de chantier</h4><p>Assistance technique en phase travaux, visas et réponses aux aléas d'exécution.</p></div></div>
+        </div>
+      </div>
+      <div class="appr-visual">
+        <div class="frame">
+          <div class="big">BE<small>·</small>TA<small>·</small>LIS</div>
+          <div class="cap">BÉTON — MÉTAL — BOIS</div>
+          <div class="accent-dots mini-dots" style="display:flex;gap:10px">
+            <span class="d-beton" style="width:14px;height:14px;border-radius:50%"></span>
+            <span class="d-bois" style="width:14px;height:14px;border-radius:50%"></span>
+            <span class="d-metal" style="width:14px;height:14px;border-radius:50%"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REFERENCES ===== -->
+<section class="references section-pad" id="references">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="sec-tag">Réalisations</div>
+      <h2>Des projets qui tiennent debout</h2>
+      <p>Une sélection de réalisations représentatives de notre savoir-faire structurel. <em style="color:var(--text-mute)">(Projets de démonstration — à remplacer par vos 10 références réelles.)</em></p>
+    </div>
+    <div class="ref-grid">
+      <div class="ref-card"><div class="ref-thumb t1"><span class="tag beton">Béton</span></div><div class="ref-info"><h4>Groupe scolaire</h4><div class="meta">Collectivité · 2 400 m² · Béton armé</div></div></div>
+      <div class="ref-card"><div class="ref-thumb t3"><span class="tag metal">Métal</span></div><div class="ref-info"><h4>Halle industrielle</h4><div class="meta">Entreprise générale · Charpente acier</div></div></div>
+      <div class="ref-card"><div class="ref-thumb t2"><span class="tag bois">Bois</span></div><div class="ref-info"><h4>Logements collectifs</h4><div class="meta">Promoteur · Structure CLT</div></div></div>
+      <div class="ref-card"><div class="ref-thumb t3"><span class="tag metal">Métal</span></div><div class="ref-info"><h4>Passerelle piétonne</h4><div class="meta">Collectivité · Ouvrage mixte</div></div></div>
+      <div class="ref-card"><div class="ref-thumb t1"><span class="tag beton">Béton</span></div><div class="ref-info"><h4>Parking silo</h4><div class="meta">Promoteur · Précontraint</div></div></div>
+      <div class="ref-card"><div class="ref-thumb t2"><span class="tag bois">Bois</span></div><div class="ref-info"><h4>Extension maison</h4><div class="meta">Particulier · Ossature bois</div></div></div>
+    </div>
+    <div class="ref-cta-row"><a href="#contact" class="btn btn-ghost">Discuter de votre projet →</a></div>
+  </div>
+</section>
+
+<!-- ===== CLIENTS ===== -->
+<section class="clients">
+  <div class="wrap">
+    <div class="lbl">Ils nous font confiance</div>
+    <div class="clients-row">
+      <span class="client-chip">Collectivités</span>
+      <span class="client-chip">Promoteurs</span>
+      <span class="client-chip">Entreprises générales</span>
+      <span class="client-chip">Architectes</span>
+      <span class="client-chip">Particuliers</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section class="section-pad" id="contact" style="border-top:1px solid var(--line)">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="sec-tag">Contact</div>
+        <h2>Parlons de votre projet</h2>
+        <p>Décrivez-nous votre besoin : nous revenons vers vous sous 48h avec une première analyse et les prochaines étapes.</p>
+        <div class="contact-detail">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 4h16v16H4z" fill="none"/><path d="M4 6l8 6 8-6"/></svg></div>
+          <div><div class="ct-label">Email</div><div class="ct-val">contact@betalis.fr</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
+          <div><div class="ct-label">Téléphone</div><div class="ct-val">+33 (0)X XX XX XX XX</div></div>
+        </div>
+        <div class="contact-detail">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
+          <div><div class="ct-label">Région</div><div class="ct-val">Île-de-France</div></div>
+        </div>
+      </div>
+      <form onsubmit="event.preventDefault();this.querySelector('.btn-primary').textContent='Message envoyé ✓';">
+        <div class="field-row">
+          <div class="field"><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
+          <div class="field"><label>Société</label><input type="text" placeholder="Votre société"></div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>Email</label><input type="email" placeholder="vous@email.fr" required></div>
+          <div class="field"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"></div>
+        </div>
+        <div class="field">
+          <label>Type de projet</label>
+          <select>
+            <option>Structure béton</option>
+            <option>Charpente métallique</option>
+            <option>Structure bois</option>
+            <option>Projet mixte / autre</option>
+          </select>
+        </div>
+        <div class="field"><label>Votre projet</label><textarea placeholder="Décrivez votre besoin en quelques lignes…" required></textarea></div>
+        <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo"><span class="dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></span>BETALIS</a>
+        <p>Bureau d'études en ingénierie structure. Béton, métal, bois — la juste structure pour chaque projet.</p>
+      </div>
+      <div class="foot-col">
+        <h5>Expertises</h5>
+        <a href="#expertises">Structures béton</a>
+        <a href="#expertises">Charpente métallique</a>
+        <a href="#expertises">Structures bois</a>
+      </div>
+      <div class="foot-col">
+        <h5>Société</h5>
+        <a href="#approche">Notre approche</a>
+        <a href="#references">Références</a>
+        <a href="#buzz">Buzz</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="foot-col">
+        <h5>Contact</h5>
+        <a href="mailto:contact@betalis.fr">contact@betalis.fr</a>
+        <a href="#">Île-de-France</a>
+        <a href="#contact">Demander un devis</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 BETALIS — Tous droits réservés.</span>
+      <span>Mentions légales · Politique de confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>30)});
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Le béton — Expertise structure | BETALIS</title>
+<meta name="description" content="L'expertise béton de BETALIS : conception et calcul de structures béton armé et précontraint. Construction neuve, réhabilitation, rénovation.">
+<link rel="icon" href="assets/betalis-favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="assets/betalis-apple-touch-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1A1A2E;--navy-2:#22223A;--navy-3:#2C2C48;
+    --beton:#8A8D94;--bois:#B0703F;--metal:#5B8AAE;
+    --text-light:#B0B2C8;--text-mute:#6E7088;--white:#FFFFFF;
+    --line:rgba(255,255,255,0.08);--line-2:rgba(255,255,255,0.14);
+    --maxw:1180px;--font-display:'Manrope',sans-serif;--font-body:'Inter',sans-serif;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:var(--font-body);background:var(--navy);color:var(--text-light);line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  h1,h2,h3{font-family:var(--font-display);color:var(--white);line-height:1.15;letter-spacing:-0.01em}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 32px}
+
+  /* NAV */
+  header.nav{position:fixed;top:0;left:0;right:0;z-index:100;transition:background .3s,border-color .3s;border-bottom:1px solid transparent}
+  header.nav.scrolled{background:rgba(26,26,46,0.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
+  .logo{display:flex;align-items:center;gap:13px;font-family:var(--font-display);font-weight:800;letter-spacing:3px;font-size:20px;color:#fff}
+  .logo .dots{display:flex;gap:5px}.logo .dots span{width:8px;height:8px;border-radius:50%}
+  .d-beton{background:var(--beton)}.d-bois{background:var(--bois)}.d-metal{background:var(--metal)}
+  .nav-links{display:flex;gap:36px;align-items:center}
+  .nav-links a{font-size:14px;font-weight:500;color:var(--text-light);transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{font-family:var(--font-display);font-weight:600;font-size:14px;color:#fff!important;border:1px solid var(--line-2);padding:10px 22px;border-radius:8px;transition:background .2s,border-color .2s}
+  .nav-cta:hover{background:var(--metal);border-color:var(--metal)}
+
+  /* HERO PAGE */
+  .page-hero{padding:160px 0 40px;position:relative;overflow:hidden}
+  .page-hero::before{content:"";position:absolute;inset:0;z-index:0;background:radial-gradient(800px 400px at 75% 10%,rgba(138,141,148,0.12),transparent 60%)}
+  .page-hero .wrap{position:relative;z-index:1}
+  .breadcrumb{font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--beton);margin-bottom:18px;display:flex;align-items:center;gap:12px}
+  .breadcrumb::before{content:"";width:32px;height:1px;background:var(--beton)}
+  .page-hero h1{font-size:clamp(2.6rem,6vw,4.4rem);font-weight:800;margin-bottom:10px}
+  .page-hero .accent-dots{display:inline-flex;gap:8px;margin-top:14px}
+  .page-hero .accent-dots span{width:11px;height:11px;border-radius:50%}
+
+  /* CONTENU TEXTE */
+  .content{padding:30px 0 20px}
+  .content .col{max-width:820px}
+  .content p{font-size:1.08rem;margin-bottom:24px;color:var(--text-light)}
+  .content p strong{color:#fff;font-weight:600}
+  .content .lead-first{font-size:1.18rem;color:#fff}
+
+  /* IMAGE MELANGE */
+  .beton-visual{margin:20px 0 0;padding:20px 0 60px}
+  .beton-visual img{width:100%;display:block;border-radius:14px}
+  .beton-visual .cap{text-align:center;font-size:.85rem;color:var(--text-mute);margin-top:16px;font-family:var(--font-display);letter-spacing:1px}
+
+  /* PRESTATIONS */
+  .prestations{background:var(--navy-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:90px 0}
+  .sec-tag{font-family:var(--font-display);font-weight:600;font-size:13px;letter-spacing:3px;text-transform:uppercase;color:var(--beton);margin-bottom:16px;display:flex;align-items:center;gap:12px}
+  .sec-tag::before{content:"";width:32px;height:1px;background:var(--beton)}
+  .prestations h2{font-size:clamp(1.8rem,3.4vw,2.6rem);font-weight:700;margin-bottom:14px}
+  .prestations .intro{font-size:1.05rem;max-width:680px;margin-bottom:54px}
+  .prest-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start}
+  .prest-card{background:var(--navy);border:1px solid var(--line);border-radius:16px;padding:34px 30px;position:relative;overflow:hidden}
+  .prest-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--beton)}
+  .prest-card h3{font-size:1.3rem;font-weight:700;margin-bottom:6px}
+  .prest-card .sub{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--beton);margin-bottom:20px}
+  .prest-card ul{list-style:none;display:flex;flex-direction:column;gap:13px}
+  .prest-card ul li{font-size:.95rem;color:var(--text-light);padding-left:18px;position:relative;line-height:1.55}
+  .prest-card ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--beton)}
+  .prest-card ul li strong{color:#fff;font-weight:600}
+
+  /* CTA */
+  .cta-band{padding:80px 0;text-align:center}
+  .cta-band h2{font-size:clamp(1.8rem,3.2vw,2.4rem);margin-bottom:24px}
+  .btn{font-family:var(--font-display);font-weight:600;font-size:15px;padding:15px 32px;border-radius:9px;cursor:pointer;transition:transform .15s,background .2s;display:inline-flex;align-items:center;gap:10px;background:var(--metal);color:#fff}
+  .btn:hover{transform:translateY(-2px);background:#6c9bbf}
+
+  /* FOOTER */
+  footer{background:var(--navy);border-top:1px solid var(--line);padding:54px 0 30px}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:18px}
+  .foot-inner p{font-size:.85rem;color:var(--text-mute)}
+
+  @media(max-width:900px){
+    .nav-links{display:none}
+    .prest-grid{grid-template-columns:1fr}
+  }
+  @media(max-width:560px){.wrap{padding:0 22px}}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="index.html" class="logo"><span class="dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></span>BETALIS</a>
+    <nav class="nav-links">
+      <a href="index.html#expertises">Expertises</a>
+      <a href="index.html#references">Références</a>
+      <a href="index.html#buzz">Buzz</a>
+      <a href="index.html#contact" class="nav-cta">Nous contacter</a>
+    </nav>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="breadcrumb">Nos expertises — Le béton</div>
+    <h1>Le béton</h1>
+    <div class="accent-dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></div>
+  </div>
+</section>
+
+<section class="content">
+  <div class="wrap">
+    <div class="col">
+      <p class="lead-first">Le béton est un matériau composite obtenu par le mélange de ciment, de sable, de granulats, d'eau et, optionnellement, d'adjuvants. Au contact de l'eau, le ciment s'hydrate et fige l'ensemble en une véritable pierre artificielle dont on pilote les performances au gramme près. C'est aujourd'hui, et de loin, le matériau de construction le plus utilisé au monde.</p>
+
+      <p><strong>Sa force, c'est la compression.</strong> Un béton structurel courant encaisse de 25 à 60 MPa — soit les classes de résistance C25/30 à C50/60 — tandis que les bétons à hautes performances (BHP) et les bétons fibrés à ultra-hautes performances (BFUP) franchissent allègrement la barre des 100 MPa. Pour donner une idée concrète : un simple bloc de béton C50/60 d'à peine 34 cm de côté — une surface plus petite qu'une feuille A3 — suffirait, en compression pure, à supporter les 575 tonnes d'un Airbus A380, le plus gros avion de ligne du monde, à pleine charge au décollage. Ajoutez à cela une excellente tenue au feu, une forte inertie thermique, une durabilité qui se compte en décennies et une liberté de formes quasi totale : le béton se coule là où l'acier et le bois s'arrêtent.</p>
+
+      <p><strong>Sa faiblesse est l'autre face de sa force : il résiste mal à la traction.</strong> On le marie donc à l'acier — c'est le béton armé — ou on le met sous tension — le béton précontraint — pour reprendre les efforts qu'il ne peut encaisser seul. Restent deux défis que nous prenons au sérieux : son empreinte carbone, dominée par le clinker du ciment, et les phénomènes de retrait, fluage et carbonatation, qu'une conception rigoureuse (rapport E/C maîtrisé, classe d'exposition XC/XD/XS adaptée, enrobage suffisant) permet de contenir.</p>
+
+      <p><strong>L'avenir du béton s'écrit bas carbone.</strong> Substitution du clinker par laitiers, cendres et métakaolins (ciments CEM II à CEM VI), granulats recyclés, bétons de réemploi, géopolymères et minéralisation du CO₂ : la filière se réinvente pour diviser son empreinte par deux à trois d'ici 2050, portée par la RE2020. Loin d'être un matériau du passé, le béton de demain sera plus sobre, plus durable et plus intelligent — et c'est précisément là que se joue notre métier.</p>
+    </div>
+  </div>
+  <div class="wrap beton-visual">
+    <img src="assets/beton-mix-transparent.png" alt="Le béton : mélange de ciment, sable, granulats et eau">
+    <div class="cap">Ciment · Sable · Granulats · Eau — les composants du béton</div>
+  </div>
+</section>
+
+<section class="prestations">
+  <div class="wrap">
+    <div class="sec-tag">Nos prestations d'études de structure</div>
+    <h2>De la fondation au dernier plancher</h2>
+    <p class="intro">Nous concevons et dimensionnons l'intégralité de la structure porteuse — et intervenons tout autant sur l'existant, en réhabilitation comme en rénovation.</p>
+
+    <div class="prest-grid">
+      <div class="prest-card">
+        <div class="sub">Neuf</div>
+        <h3>Construction neuve</h3>
+        <ul>
+          <li><strong>Fondations</strong> — superficielles (semelles filantes, semelles isolées / longrines, radier général) et profondes (efforts en têtes de pieux)</li>
+          <li><strong>Planchers bas</strong> — dalle portée, dallage sur terre-plein, plancher sur vide sanitaire</li>
+          <li><strong>Murs enterrés & soutènements</strong> — voiles contre-terre, murs de soutènement, efforts sur parois parisiennes, berlinoises et moulées, tirants et butons</li>
+          <li><strong>Planchers intermédiaires</strong> — dalle pleine en béton armé, efforts sur dalles précontraintes, poutrelles-hourdis, dalles alvéolaires, prédalles, planchers mixtes</li>
+          <li><strong>Éléments porteurs</strong> — poteaux, poutres, voiles et refends, noyaux de contreventement</li>
+        </ul>
+      </div>
+
+      <div class="prest-card">
+        <div class="sub">Transformer l'existant</div>
+        <h3>Réhabilitation</h3>
+        <ul>
+          <li>Extensions et surélévations</li>
+          <li>Reprises en sous-œuvre</li>
+          <li>Renforcement par lamelles et plats de fibre de carbone (PRFC)</li>
+          <li>Chemisage béton ou acier, renfort d'éléments existants</li>
+          <li>Création d'ouvertures de baies et de trémies (linteaux, chevêtres, renforts)</li>
+        </ul>
+      </div>
+
+      <div class="prest-card">
+        <div class="sub">Diagnostiquer, réparer, pérenniser</div>
+        <h3>Rénovation</h3>
+        <ul>
+          <li>Diagnostic et traitement de tout ouvrage en béton armé</li>
+          <li>Renforcement de planchers et de balcons</li>
+          <li>Passivation et protection des armatures corrodées</li>
+          <li>Réparation des bétons carbonatés et épaufrures, reconstitution de l'enrobage</li>
+          <li>Traitement des fissures par injection</li>
+          <li>Ragréage structurel et mortiers de réparation</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band">
+  <div class="wrap">
+    <h2>Un projet en béton à étudier ?</h2>
+    <a href="index.html#contact" class="btn">Démarrer un projet →</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot-inner">
+    <a href="index.html" class="logo"><span class="dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></span>BETALIS</a>
+    <p>© 2026 BETALIS — Ingénierie structure · béton, métal, bois</p>
+  </div>
+</footer>
+
+<script>
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>30)});
+</script>
+</body>
+</html>
