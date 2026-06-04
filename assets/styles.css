@@ -107,8 +107,14 @@ header.nav.scrolled{background:rgba(26,26,46,0.85);backdrop-filter:blur(12px);bo
 .exp-card ul li{font-size:.92rem;color:var(--text-light);padding-left:18px;position:relative}
 .exp-card ul li::before{content:"";position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%}
 .exp-card.beton ul li::before{background:var(--beton)}.exp-card.bois ul li::before{background:var(--bois)}.exp-card.metal ul li::before{background:var(--metal)}
-.exp-link{margin-top:auto;font-family:var(--font-display);font-weight:600;font-size:.92rem}
-.exp-card.beton .exp-link{color:var(--beton)}.exp-card.bois .exp-link{color:var(--bois)}.exp-card.metal .exp-link{color:var(--metal)}
+.exp-link{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:.95rem;padding:11px 20px;border-radius:9px;border:1px solid;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.exp-link:hover{transform:translateY(-2px)}
+.exp-card.beton .exp-link{color:var(--beton);border-color:rgba(138,141,148,.45)}
+.exp-card.beton .exp-link:hover{background:var(--beton);color:var(--navy);border-color:var(--beton)}
+.exp-card.bois .exp-link{color:var(--bois);border-color:rgba(176,112,63,.45)}
+.exp-card.bois .exp-link:hover{background:var(--bois);color:var(--navy);border-color:var(--bois)}
+.exp-card.metal .exp-link{color:var(--metal);border-color:rgba(91,138,174,.45)}
+.exp-card.metal .exp-link:hover{background:var(--metal);color:var(--navy);border-color:var(--metal)}
 .exp-soon{margin-top:auto;font-family:var(--font-display);font-weight:600;font-size:.82rem;color:var(--text-mute);letter-spacing:1px}
 
 /* contenu prose (page expertise) */
