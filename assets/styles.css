@@ -199,3 +199,11 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
   .field-row{grid-template-columns:1fr}
   .home-hero{padding:104px 0 50px}
 }
+
+/* === Page acier (expertise-metal) === */
+.metal-visual{margin-top:6px;padding-top:10px;padding-bottom:44px}
+.metal-visual img{width:100%;display:block;border-radius:14px}
+.metal-visual .cap{text-align:center;font-size:.85rem;color:var(--text-mute);margin-top:16px;font-family:var(--font-display);letter-spacing:1px}
+.prest-card .desc{color:var(--text-light);font-size:1rem;line-height:1.65;margin:0}
+.prest-metal .prest-card::before{background:var(--metal)}
+.prest-metal .prest-card .sub{color:var(--metal)}
