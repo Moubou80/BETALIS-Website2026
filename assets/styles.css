@@ -214,3 +214,14 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
 .bois-visual .cap{text-align:center;font-size:.85rem;color:var(--text-mute);margin-top:16px;font-family:var(--font-display);letter-spacing:1px}
 .prest-bois .prest-card::before{background:var(--bois)}
 .prest-bois .prest-card .sub{color:var(--bois)}
+
+/* === Page références (typologies) === */
+.typo-card{background:var(--navy-2);border:1px solid var(--line);border-radius:16px;padding:30px 28px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.typo-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--beton),var(--bois) 50%,var(--metal));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.typo-card:hover{transform:translateY(-6px);border-color:var(--line-2)}
+.typo-card:hover::before{transform:scaleX(1)}
+.typo-card .num{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:1px;color:var(--text-mute);margin-bottom:10px}
+.typo-card h3{font-size:1.18rem;font-weight:700;margin-bottom:8px}
+.typo-card p{font-size:.95rem;color:var(--text-light);line-height:1.55}
+.ref-band{background:var(--navy-2);border:1px solid var(--line);border-radius:16px;padding:28px 34px;text-align:center;font-size:1.08rem;color:var(--text-light);margin-top:34px}
+.ref-band strong{color:#fff;font-weight:600}
