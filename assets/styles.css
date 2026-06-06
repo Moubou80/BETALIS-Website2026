@@ -223,5 +223,7 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
 .typo-card .num{font-family:var(--font-display);font-size:13px;font-weight:700;letter-spacing:1px;color:var(--text-mute);margin-bottom:10px}
 .typo-card h3{font-size:1.18rem;font-weight:700;margin-bottom:8px}
 .typo-card p{font-size:.95rem;color:var(--text-light);line-height:1.55}
-.ref-band{background:var(--navy-2);border:1px solid var(--line);border-radius:16px;padding:28px 34px;text-align:center;font-size:1.08rem;color:var(--text-light);margin-top:34px}
-.ref-band strong{color:#fff;font-weight:600}
+.ref-statement{text-align:center;max-width:780px;margin:64px auto 0}
+.ref-statement .bar{width:54px;height:3px;border-radius:2px;margin:0 auto 22px;background:linear-gradient(90deg,var(--beton),var(--bois) 50%,var(--metal))}
+.ref-statement p{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.85rem);font-weight:600;line-height:1.45;color:var(--text-light);margin:0}
+.ref-statement strong{color:#fff;font-weight:700}
