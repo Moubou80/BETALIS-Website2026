@@ -292,3 +292,28 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
   .nav-links a{padding:15px 40px;width:100%;font-size:16px}
   .nav-cta{margin:12px 40px 0;text-align:center;justify-content:center;display:flex}
 }
+
+/* === Hub : article = carte + illustration (photo encadrée) === */
+.art-list{display:flex;flex-direction:column;gap:26px}
+.art-row{display:grid;grid-template-columns:1.05fr 1fr;background:var(--navy-2);border:1px solid var(--line);border-radius:18px;overflow:hidden;position:relative;transition:transform .3s,border-color .3s}
+.art-row::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--beton),var(--bois) 50%,var(--metal));transform:scaleX(0);transform-origin:left;transition:transform .4s;z-index:2}
+.art-row.beton::before{background:var(--beton)}
+.art-row.metal::before{background:var(--metal)}
+.art-row.bois::before{background:var(--bois)}
+.art-row:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.art-row:hover::before{transform:scaleX(1)}
+.art-row .art-body{padding:38px 36px;display:flex;flex-direction:column;justify-content:center}
+.art-row .art-meta{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-mute);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.art-row .art-cat{color:var(--metal)}
+.art-row h3{font-size:1.42rem;font-weight:700;margin-bottom:12px;line-height:1.28}
+.art-row p{font-size:.98rem;color:var(--text-light);line-height:1.6;margin-bottom:24px}
+.art-row .art-link{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:.95rem;color:#fff;border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:border-color .2s,gap .2s}
+.art-row .art-link:hover{border-color:var(--metal);gap:12px}
+.art-thumb{position:relative;min-height:250px;border-left:1px solid var(--line);overflow:hidden;background:var(--navy)}
+.art-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+@media(max-width:760px){
+  .art-row{grid-template-columns:1fr}
+  .art-thumb{order:-1;min-height:190px;border-left:none;border-bottom:1px solid var(--line)}
+}
+/* Tableau article sans colonnes matériaux : en-têtes neutres */
+.cmp-table.plain thead th{color:#fff}
