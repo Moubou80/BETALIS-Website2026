@@ -227,3 +227,68 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
 .ref-statement .bar{width:54px;height:3px;border-radius:2px;margin:0 auto 22px;background:linear-gradient(90deg,var(--beton),var(--bois) 50%,var(--metal))}
 .ref-statement p{font-family:var(--font-display);font-size:clamp(1.3rem,2.6vw,1.85rem);font-weight:600;line-height:1.45;color:var(--text-light);margin:0}
 .ref-statement strong{color:#fff;font-weight:700}
+
+/* ===================== Connaissances & articles (journal) ===================== */
+/* Liens dans la prose d'article */
+.content a{color:var(--metal);border-bottom:1px solid rgba(91,138,174,.4);transition:border-color .2s,color .2s}
+.content a:hover{color:#7ba6c6;border-bottom-color:var(--metal)}
+
+/* Corps d'article */
+.content .article-col{max-width:840px}
+.article-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;font-family:var(--font-display);font-size:.86rem;color:var(--text-mute);margin-bottom:30px}
+.article-meta .author{color:var(--text-light);font-weight:600}
+.article-meta .sep{width:4px;height:4px;border-radius:50%;background:var(--text-mute);display:inline-block}
+.content h2{font-size:clamp(1.45rem,2.6vw,1.95rem);font-weight:700;color:#fff;margin:46px 0 16px;line-height:1.2}
+.content h3{font-size:1.12rem;font-weight:700;color:#fff;margin:28px 0 8px}
+
+/* Tableau comparatif */
+.cmp-wrap{overflow-x:auto;margin:34px 0;border:1px solid var(--line);border-radius:14px}
+.cmp-table{width:100%;border-collapse:collapse;font-size:.95rem;min-width:580px}
+.cmp-table th,.cmp-table td{padding:14px 18px;text-align:left;border-bottom:1px solid var(--line)}
+.cmp-table thead th{font-family:var(--font-display);font-weight:700;color:#fff;background:var(--navy-2)}
+.cmp-table thead th:nth-child(2){color:var(--beton)}
+.cmp-table thead th:nth-child(3){color:var(--metal)}
+.cmp-table thead th:nth-child(4){color:var(--bois)}
+.cmp-table tbody th{font-family:var(--font-body);font-weight:600;color:#fff;white-space:nowrap}
+.cmp-table tbody tr:last-child td,.cmp-table tbody tr:last-child th{border-bottom:none}
+.cmp-table tbody tr:hover td,.cmp-table tbody tr:hover th{background:rgba(255,255,255,.02)}
+.cmp-table td{color:var(--text-light)}
+
+/* FAQ */
+.faq-block{max-width:840px;margin-top:8px;border-top:1px solid var(--line)}
+.faq-block details{border-bottom:1px solid var(--line)}
+.faq-block summary{cursor:pointer;list-style:none;padding:22px 0;font-family:var(--font-display);font-weight:600;font-size:1.06rem;color:#fff;display:flex;justify-content:space-between;align-items:center;gap:18px}
+.faq-block summary::-webkit-details-marker{display:none}
+.faq-block summary::after{content:"+";color:var(--metal);font-size:1.5rem;font-weight:300;line-height:1;transition:transform .25s}
+.faq-block details[open] summary::after{transform:rotate(45deg)}
+.faq-block details p{padding:0 0 22px;margin:0;color:var(--text-light);font-size:1rem;max-width:760px}
+
+/* Signature auteur */
+.article-sign{max-width:840px;margin-top:42px;padding-top:22px;border-top:1px solid var(--line);font-family:var(--font-display)}
+.article-sign .by{color:#fff;font-weight:700;font-size:1rem}
+.article-sign .role{color:var(--text-mute);font-size:.88rem;margin-top:2px}
+
+/* Hub : cartes-article */
+.art-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.art-card{background:var(--navy-2);border:1px solid var(--line);border-radius:16px;padding:30px 28px;position:relative;overflow:hidden;transition:transform .3s,border-color .3s;display:flex;flex-direction:column}
+.art-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--beton),var(--bois) 50%,var(--metal));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.art-card.beton::before{background:var(--beton)}
+.art-card.metal::before{background:var(--metal)}
+.art-card.bois::before{background:var(--bois)}
+.art-card:hover{transform:translateY(-6px);border-color:var(--line-2)}
+.art-card:hover::before{transform:scaleX(1)}
+.art-card .art-meta{font-family:var(--font-display);font-size:12px;font-weight:600;letter-spacing:1px;text-transform:uppercase;color:var(--text-mute);margin-bottom:14px;display:flex;align-items:center;gap:10px}
+.art-card .art-cat{color:var(--metal)}
+.art-card h3{font-size:1.18rem;font-weight:700;margin-bottom:10px;line-height:1.32}
+.art-card p{font-size:.95rem;color:var(--text-light);line-height:1.55;margin-bottom:22px}
+.art-card .art-link{margin-top:auto;align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-family:var(--font-display);font-weight:700;font-size:.92rem;color:#fff;border-bottom:1px solid var(--line-2);padding-bottom:3px;transition:border-color .2s,gap .2s}
+.art-card .art-link:hover{border-color:var(--metal);gap:12px}
+
+/* Nav 5 items : bascule burger plus tôt (les libellés longs débordent sous ~1050px) */
+@media(max-width:1024px){
+  .burger{display:flex}
+  .nav-links{position:fixed;top:78px;left:0;right:0;background:rgba(26,26,46,0.97);backdrop-filter:blur(14px);flex-direction:column;gap:0;padding:8px 0 16px;border-bottom:1px solid var(--line);display:none}
+  .nav-links.open{display:flex}
+  .nav-links a{padding:15px 40px;width:100%;font-size:16px}
+  .nav-cta{margin:12px 40px 0;text-align:center;justify-content:center;display:flex}
+}
