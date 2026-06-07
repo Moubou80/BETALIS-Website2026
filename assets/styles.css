@@ -317,3 +317,36 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
 }
 /* Tableau article sans colonnes matériaux : en-têtes neutres */
 .cmp-table.plain thead th{color:#fff}
+
+/* ===================== Buzz & actualités (mur d'actus) ===================== */
+.buzz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:24px}
+.buzz-card{background:var(--navy-2);border:1px solid var(--line);border-radius:16px;padding:28px 26px;display:flex;flex-direction:column;position:relative;overflow:hidden;transition:transform .3s,border-color .3s}
+.buzz-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:var(--metal);opacity:0;transition:opacity .3s}
+.buzz-card:hover{transform:translateY(-5px);border-color:var(--line-2)}
+.buzz-card:hover::before{opacity:1}
+.buzz-card.bois::before{background:var(--bois)}
+.buzz-card.beton::before{background:var(--beton)}
+.buzz-card.metal::before{background:var(--metal)}
+.buzz-card.rehab::before{background:var(--beton)}
+.buzz-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px}
+.buzz-tag{font-family:var(--font-display);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;padding:5px 12px;border-radius:20px;white-space:nowrap}
+.buzz-card.bois .buzz-tag{color:var(--bois);background:rgba(176,112,63,.15)}
+.buzz-card.beton .buzz-tag{color:var(--beton);background:rgba(138,141,148,.16)}
+.buzz-card.metal .buzz-tag{color:var(--metal);background:rgba(91,138,174,.16)}
+.buzz-card.rehab .buzz-tag{color:var(--beton);background:rgba(138,141,148,.16)}
+.buzz-emoji{font-size:1.5rem;line-height:1}
+.buzz-card h3{font-size:1.18rem;font-weight:700;margin-bottom:10px;line-height:1.3}
+.buzz-card .lede{font-size:.94rem;color:var(--text-light);line-height:1.55;margin-bottom:16px}
+.buzz-read{border-left:3px solid var(--metal);padding:2px 0 2px 14px;margin-bottom:18px}
+.buzz-card.bois .buzz-read{border-color:var(--bois)}
+.buzz-card.beton .buzz-read{border-color:var(--beton)}
+.buzz-card.metal .buzz-read{border-color:var(--metal)}
+.buzz-card.rehab .buzz-read{border-color:var(--beton)}
+.buzz-read .lbl{font-family:var(--font-display);font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-mute);display:block;margin-bottom:5px}
+.buzz-read p{font-size:.92rem;color:#fff;line-height:1.5;margin:0}
+.buzz-read a{color:#fff;border-bottom:1px solid var(--line-2)}
+.buzz-read a:hover{border-color:var(--metal)}
+.buzz-foot{margin-top:auto;display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.78rem;color:var(--text-mute);font-family:var(--font-display)}
+.buzz-foot a{color:var(--text-mute);border-bottom:1px solid var(--line-2);transition:color .2s}
+.buzz-foot a:hover{color:#fff;border-color:var(--metal)}
+@media(max-width:560px){.buzz-grid{grid-template-columns:1fr}}
