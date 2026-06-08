@@ -83,6 +83,17 @@
         </div>
         <div class="field"><label for="cf-msg">Votre projet</label><textarea id="cf-msg" name="message" placeholder="Décrivez votre besoin en quelques lignes…" required></textarea></div>
 
+        <div class="field">
+          <label>Votre dossier <span style="color:var(--text-mute);font-weight:400">(optionnel)</span></label>
+          <div class="upload-row">
+            <label class="file-btn" for="cf-file">📎 Joindre un fichier</label>
+            <input type="file" id="cf-file" name="fichier" accept=".pdf,.zip,.rar,.7z,.jpg,.jpeg,.png,.dwg,.dxf,.doc,.docx,.xls,.xlsx" hidden>
+            <span class="file-name" id="cf-file-name">Aucun fichier — jusqu'à 10 Mo</span>
+          </div>
+          <input type="url" name="lien_dossier" placeholder="…ou collez un lien (WeTransfer, Drive…) pour un dossier > 10 Mo" style="margin-top:12px">
+          <p class="hint" id="cf-file-hint">Pièce jointe ≤ 10 Mo, ou un lien de téléchargement pour les dossiers plus lourds.</p>
+        </div>
+
         <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
 
         <label class="consent"><input type="checkbox" name="consent" required> <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="#">politique de confidentialité</a>.</span></label>
@@ -115,23 +126,42 @@
   var f=document.getElementById('contact-form'); if(!f) return;
   var btn=f.querySelector('button[type=submit]');
   var status=document.getElementById('cf-status');
+  var fileInput=document.getElementById('cf-file');
+  var fileName=document.getElementById('cf-file-name');
+  var fileHint=document.getElementById('cf-file-hint');
+  var MAX=10*1024*1024;
+  var DEFNAME='Aucun fichier — jusqu’à 10 Mo';
+  var DEFHINT='Pièce jointe ≤ 10 Mo, ou un lien de téléchargement pour les dossiers plus lourds.';
   var WEBHOOK='https://n8n.carisme.fr/webhook/betalis-contact';
+
+  fileInput.addEventListener('change',function(){
+    var file=fileInput.files[0];
+    if(!file){fileName.textContent=DEFNAME;fileHint.className='hint';fileHint.textContent=DEFHINT;return;}
+    if(file.size>MAX){
+      fileInput.value='';fileName.textContent=DEFNAME;
+      fileHint.className='hint err';
+      fileHint.textContent='Fichier trop lourd ('+(file.size/1048576).toFixed(1)+' Mo, max 10 Mo). Utilisez plutôt un lien de téléchargement.';
+      return;
+    }
+    fileName.textContent=file.name+' ('+(file.size/1048576).toFixed(1)+' Mo)';
+    fileHint.className='hint ok';fileHint.textContent='Fichier prêt à être joint à votre demande.';
+  });
+
   f.addEventListener('submit',function(e){
     e.preventDefault();
     if(f.website.value){return;}                 // honeypot anti-spam
     if(!f.checkValidity()){f.reportValidity();return;}
-    var data={
-      nom:f.nom.value.trim(), societe:f.societe.value.trim(),
-      email:f.email.value.trim(), telephone:f.telephone.value.trim(),
-      type_projet:f.type_projet.value, message:f.message.value.trim(),
-      source:'betalis.fr/contact'
-    };
+    var file=fileInput.files[0];
+    if(file&&file.size>MAX){fileHint.className='hint err';fileHint.textContent='Fichier trop lourd (max 10 Mo). Utilisez un lien.';return;}
+    var fd=new FormData(f);
+    fd.append('source','betalis.fr/contact');
     var old=btn.textContent; btn.disabled=true; btn.textContent='Envoi…';
     status.textContent=''; status.className='form-status';
-    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+    fetch(WEBHOOK,{method:'POST',body:fd})
       .then(function(r){ if(!r.ok) throw new Error('http '+r.status); })
       .then(function(){
-        f.reset(); btn.textContent='Message envoyé ✓';
+        f.reset(); fileName.textContent=DEFNAME; fileHint.className='hint'; fileHint.textContent='';
+        btn.textContent='Message envoyé ✓';
         status.textContent='Merci ! Nous revenons vers vous sous 48h.'; status.className='form-status ok';
       })
       .catch(function(){
