@@ -4,7 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Contact — Démarrer un projet | BETALIS</title>
-<meta name="description" content="Contactez BETALIS pour étudier votre projet de structure béton, métal ou bois.">
+<meta name="description" content="Contactez BETALIS, bureau d'études structure (béton, métal, bois) en Île-de-France. Décrivez votre projet, réponse sous 48h.">
+<link rel="canonical" href="https://betalis.fr/contact.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact — Démarrer un projet | BETALIS">
+<meta property="og:description" content="Décrivez votre projet de structure, réponse sous 48h.">
+<meta property="og:url" content="https://betalis.fr/contact.html">
+<meta property="og:locale" content="fr_FR">
 <link rel="icon" href="assets/betalis-favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="assets/betalis-apple-touch-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,8 +35,9 @@
 <main>
 <section class="page-hero">
   <div class="wrap">
-    <div class="breadcrumb">Contact</div>
+    <div class="sec-tag">Contact</div>
     <h1>Parlons de votre projet</h1>
+    <div class="accent-dots"><span class="d-beton"></span><span class="d-bois"></span><span class="d-metal"></span></div>
   </div>
 </section>
 
@@ -39,35 +46,54 @@
     <div class="contact-grid">
       <div class="contact-info">
         <p>Décrivez-nous votre besoin : nous revenons vers vous sous 48h avec une première analyse et les prochaines étapes.</p>
+
+        <div class="contact-detail">
+          <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M3 21h18M5 21V7l7-4 7 4v14M10 21v-5h4v5"/></svg></div>
+          <div><div class="ct-label">Adresse</div><div class="ct-val">2 rue de Pontoise<br>95650 Puiseux-Pontoise</div></div>
+        </div>
+
         <div class="contact-detail">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M4 4h16v16H4z" fill="none"/><path d="M4 6l8 6 8-6"/></svg></div>
-          <div><div class="ct-label">Email</div><div class="ct-val">contact@betalis.fr</div></div>
+          <div><div class="ct-label">Email</div><div class="ct-val"><a href="mailto:contact@betalis.fr" style="color:#fff">contact@betalis.fr</a></div></div>
         </div>
+
         <div class="contact-detail">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
-          <div><div class="ct-label">Téléphone</div><div class="ct-val">+33 (0)X XX XX XX XX</div></div>
+          <div><div class="ct-label">Téléphone</div><div class="ct-val"><a href="tel:+33668711434" style="color:#fff">06 68 71 14 34</a></div></div>
         </div>
+
         <div class="contact-detail">
           <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke-width="1.6"><path d="M12 21s7-6 7-11a7 7 0 10-14 0c0 5 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></div>
           <div><div class="ct-label">Région</div><div class="ct-val">Île-de-France</div></div>
         </div>
       </div>
-      <form onsubmit="event.preventDefault();this.querySelector('.btn-primary').textContent='Message envoyé ✓';">
+
+      <form id="contact-form" novalidate>
         <div class="field-row">
-          <div class="field"><label>Nom</label><input type="text" placeholder="Votre nom" required></div>
-          <div class="field"><label>Société</label><input type="text" placeholder="Votre société"></div>
+          <div class="field"><label for="cf-nom">Nom</label><input id="cf-nom" name="nom" type="text" placeholder="Votre nom" required></div>
+          <div class="field"><label for="cf-societe">Société</label><input id="cf-societe" name="societe" type="text" placeholder="Votre société"></div>
         </div>
         <div class="field-row">
-          <div class="field"><label>Email</label><input type="email" placeholder="vous@email.fr" required></div>
-          <div class="field"><label>Téléphone</label><input type="tel" placeholder="06 XX XX XX XX"></div>
+          <div class="field"><label for="cf-email">Email</label><input id="cf-email" name="email" type="email" placeholder="vous@email.fr" required></div>
+          <div class="field"><label for="cf-tel">Téléphone</label><input id="cf-tel" name="telephone" type="tel" placeholder="06 XX XX XX XX"></div>
         </div>
         <div class="field">
-          <label>Type de projet</label>
-          <select><option>Structure béton</option><option>Charpente métallique</option><option>Structure bois</option><option>Projet mixte / autre</option></select>
+          <label for="cf-type">Type de projet</label>
+          <select id="cf-type" name="type_projet"><option>Structure béton</option><option>Charpente métallique</option><option>Structure bois</option><option>Projet mixte / autre</option></select>
         </div>
-        <div class="field"><label>Votre projet</label><textarea placeholder="Décrivez votre besoin en quelques lignes…" required></textarea></div>
+        <div class="field"><label for="cf-msg">Votre projet</label><textarea id="cf-msg" name="message" placeholder="Décrivez votre besoin en quelques lignes…" required></textarea></div>
+
+        <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
+
+        <label class="consent"><input type="checkbox" name="consent" required> <span>J'accepte que mes données soient utilisées pour traiter ma demande, conformément à la <a href="#">politique de confidentialité</a>.</span></label>
+
         <button type="submit" class="btn btn-primary">Envoyer ma demande</button>
+        <p class="form-status" id="cf-status" role="status" aria-live="polite"></p>
       </form>
+    </div>
+
+    <div class="contact-map">
+      <iframe src="https://www.google.com/maps?q=2%20rue%20de%20Pontoise%2C%2095650%20Puiseux-Pontoise&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation BETALIS — 2 rue de Pontoise, 95650 Puiseux-Pontoise"></iframe>
     </div>
   </div>
 </section>
@@ -84,5 +110,36 @@
   </div>
 </footer>
 <script src="assets/main.js"></script>
+<script>
+(function(){
+  var f=document.getElementById('contact-form'); if(!f) return;
+  var btn=f.querySelector('button[type=submit]');
+  var status=document.getElementById('cf-status');
+  var WEBHOOK='https://n8n.carisme.fr/webhook/betalis-contact';
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(f.website.value){return;}                 // honeypot anti-spam
+    if(!f.checkValidity()){f.reportValidity();return;}
+    var data={
+      nom:f.nom.value.trim(), societe:f.societe.value.trim(),
+      email:f.email.value.trim(), telephone:f.telephone.value.trim(),
+      type_projet:f.type_projet.value, message:f.message.value.trim(),
+      source:'betalis.fr/contact'
+    };
+    var old=btn.textContent; btn.disabled=true; btn.textContent='Envoi…';
+    status.textContent=''; status.className='form-status';
+    fetch(WEBHOOK,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+      .then(function(r){ if(!r.ok) throw new Error('http '+r.status); })
+      .then(function(){
+        f.reset(); btn.textContent='Message envoyé ✓';
+        status.textContent='Merci ! Nous revenons vers vous sous 48h.'; status.className='form-status ok';
+      })
+      .catch(function(){
+        btn.disabled=false; btn.textContent=old;
+        status.textContent='Une erreur est survenue. Réessayez ou écrivez-nous directement à contact@betalis.fr.'; status.className='form-status err';
+      });
+  });
+})();
+</script>
 </body>
 </html>
