@@ -104,7 +104,11 @@
     </div>
 
     <div class="contact-map">
-      <iframe src="https://www.google.com/maps?q=2%20rue%20de%20Pontoise%2C%2095650%20Puiseux-Pontoise&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation BETALIS — 2 rue de Pontoise, 95650 Puiseux-Pontoise"></iframe>
+      <div class="map-consent" id="mapConsent">
+        <p>La carte est fournie par Google Maps, qui dépose des cookies.</p>
+        <button type="button" class="btn btn-primary" data-map-load>Afficher la carte</button>
+      </div>
+      <iframe data-src="https://www.google.com/maps?q=2%20rue%20de%20Pontoise%2C%2095650%20Puiseux-Pontoise&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Localisation BETALIS — 2 rue de Pontoise, 95650 Puiseux-Pontoise" style="display:none"></iframe>
     </div>
   </div>
 </section>

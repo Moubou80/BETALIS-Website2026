@@ -396,3 +396,15 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
 .legal strong{color:#fff;font-weight:600}
 .legal .ml-block{background:var(--navy-2);border:1px solid var(--line);border-radius:14px;padding:22px 26px;margin-bottom:18px}
 .legal .ml-block p{margin:0 0 6px}
+
+
+/* === Bandeau cookies === */
+.cookie-banner{position:fixed;left:0;right:0;bottom:0;z-index:9999;background:var(--navy-2);border-top:1px solid var(--line-2);padding:18px 22px;display:flex;flex-wrap:wrap;align-items:center;gap:16px;justify-content:center;box-shadow:0 -10px 30px rgba(0,0,0,.35)}
+.cookie-banner p{margin:0;color:var(--text-light);font-size:.92rem;max-width:760px;line-height:1.55}
+.cookie-banner a{color:#fff;border-bottom:1px solid var(--line-2)}
+.cookie-actions{display:flex;gap:10px;flex-shrink:0}
+.cookie-banner .btn{padding:11px 20px;font-size:.9rem;cursor:pointer}
+.cookie-refuse{background:transparent;border:1px solid var(--line-2);color:var(--text-light)}
+.cookie-refuse:hover{border-color:#fff;color:#fff}
+.map-consent{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;min-height:320px;padding:40px 24px;background:var(--navy-2);border:1px solid var(--line);border-radius:14px;color:var(--text-light)}
+.map-consent p{margin:0;font-size:.92rem;max-width:420px;line-height:1.5}
