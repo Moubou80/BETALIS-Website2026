@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://betalis.fr/sitemap.xml
