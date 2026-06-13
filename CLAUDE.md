@@ -36,6 +36,7 @@
 - Toute nouvelle page reprend la même structure : `<head>` (title + meta description + canonical + og + favicons + fonts + styles.css), `header.nav`, `main`, `footer`, `<script src="assets/main.js">`.
 - Écrire « **bureau d'études d'ingénierie** » pour le descriptif, mais « bureau d'études structure » quand on parle de la spécialité (ne pas alourdir).
 - Dates d'articles affichées en français « j mois aaaa » + version ISO dans le JSON-LD.
+- **Convention de slug (lien image ↔ article)** : chaque article a un *slug* en minuscules-tirets (ex. `termites-bois`). De ce slug découlent automatiquement la page `journal/<slug>.html` et l'image d'en-tête `/assets/article-<slug>.jpg` (générée en amont par le Studio images n8n). Toujours réutiliser **le même slug** des deux côtés.
 
 ## 6. Formulaire de contact (page contact.html)
 - Envoie un `FormData` (multipart) en POST vers un **webhook n8n** (l'URL est déjà dans `contact.html`).
@@ -74,3 +75,4 @@
 - ❌ Ne pas casser la charte ni les chemins relatifs/absolus.
 - ✅ Pour toute modif multi-pages (footer, nav), appliquer **partout** de façon cohérente.
 - ✅ Toujours vérifier le rendu et finir par `git push` (le déploiement suit tout seul).
+- ✅ **Commencer TOUTE session par `git pull`** (l'image a été déposée sur GitHub par le Studio n8n — il faut être à jour avant de la référencer et de pousser), puis finir par `git push`.
