@@ -235,6 +235,8 @@ footer{flex-shrink:0;background:var(--navy);border-top:1px solid var(--line);pad
 
 /* Corps d'article */
 .content .article-col{max-width:840px}
+.article-hero{margin:0 0 30px;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:var(--navy)}
+.article-hero img{width:100%;height:auto;display:block}
 .article-meta{display:flex;flex-wrap:wrap;align-items:center;gap:10px 12px;font-family:var(--font-display);font-size:.86rem;color:var(--text-mute);margin-bottom:30px}
 .article-meta .author{color:var(--text-light);font-weight:600}
 .article-meta .sep{width:4px;height:4px;border-radius:50%;background:var(--text-mute);display:inline-block}
