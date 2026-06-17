@@ -168,15 +168,24 @@
     var old=btn.textContent; btn.disabled=true; btn.textContent='Envoi…';
     status.textContent=''; status.className='form-status';
     fetch(WEBHOOK,{method:'POST',body:fd})
-      .then(function(r){ if(!r.ok) throw new Error('http '+r.status); })
-      .then(function(){
+      .then(function(r){
+        // Lecture tolérante : une réponse vide ou non-JSON ne doit pas faire échouer un envoi réussi.
+        return r.text().then(function(t){
+          var data=null; try{ data=t?JSON.parse(t):null; }catch(e){}
+          return {ok:r.ok,status:r.status,data:data};
+        });
+      })
+      .then(function(res){
+        // Échec uniquement si statut HTTP non-OK ou si n8n renvoie explicitement {ok:false}.
+        if(!res.ok || (res.data && res.data.ok===false)) throw new Error('http '+res.status);
         f.reset(); fileName.textContent=DEFNAME; fileHint.className='hint'; fileHint.textContent='';
         btn.textContent='Message envoyé ✓';
         status.textContent='Merci ! Nous revenons vers vous sous 48h.'; status.className='form-status ok';
       })
       .catch(function(){
+        // Inclut le cas CORS / réseau (la requête a pu aboutir côté serveur malgré tout).
         btn.disabled=false; btn.textContent=old;
-        status.textContent='Une erreur est survenue. Réessayez ou écrivez-nous directement à contact@betalis.fr.'; status.className='form-status err';
+        status.textContent='L’envoi n’a pas pu être confirmé. Votre message nous est peut-être déjà parvenu ; dans le doute, réessayez ou écrivez-nous à contact@betalis.fr.'; status.className='form-status err';
       });
   });
 })();
